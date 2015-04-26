@@ -1,0 +1,17 @@
+{
+  "name": "connect-mock-rest",
+  "version": "1.0.0",
+  "description": "Connect middleware to mock rest endpoints with json files",
+  "keywords": [
+    "connect",
+    "mock",
+    "rest"
+  ],
+  "author": "Steve Thomson <organicpanda@gmail.com>",
+  "homepage": "https://github.com/OrganicPanda/connect-mock-rest",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OrganicPanda/connect-mock-rest.git"
+  },
+  "dependencies": {}
+}
