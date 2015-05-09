@@ -7,18 +7,16 @@ When using this middleware `GET`, `POST`, `PUT`, `PATCH` and `DELETE` can be per
 
 This module works particularly nice when combined with my fork of [TJ](https://github.com/tj)'s [serve](https://github.com/tj/serve) which can be found [here](https://github.com/OrganicPanda/serve). 
 
-At the moment it's only tested with connect 2.3.x because that is what serve uses.
-
 ## Setup
 ```shell
-$ npm install connect@2.3.x
 $ npm install body-parser
 $ npm install connect-mock-rest
 ```
     
 ## Usage
 ```js
-var connect = require('connect')
+var path = require('path')
+  , connect = require('connect')
   , mockRest = require('connect-mock-rest')
   , bodyParser = require('body-parser');
 
@@ -26,6 +24,12 @@ var server = connect();
 
 server.use(bodyParser());
 server.use(mockRest());
+```
+
+If you are serving from a different location you need to specify that:
+
+```
+server.use(mockRest(path.join(__dirname, 'public')));
 ```
 
 Create a json file containing an array. In this example `/foo.json` contains `[]`. Start your server and then:
