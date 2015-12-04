@@ -9,6 +9,7 @@ This module works particularly nice when combined with my fork of [TJ](https://g
 
 ## Setup
 ```shell
+$ npm install connect
 $ npm install body-parser
 $ npm install connect-mock-rest
 ```
@@ -17,22 +18,19 @@ $ npm install connect-mock-rest
 ```js
 var path = require('path')
   , connect = require('connect')
+  , http = require('http')
   , mockRest = require('connect-mock-rest')
   , bodyParser = require('body-parser');
 
 var server = connect();
 
-server.use(bodyParser());
-server.use(mockRest());
+server.use(bodyParser.json());
+server.use(mockRest(path.join(__dirname, 'data')));
+
+http.createServer(server).listen(3000)
 ```
 
-If you are serving from a different location you need to specify that:
-
-```
-server.use(mockRest(path.join(__dirname, 'public')));
-```
-
-Create a json file containing an array. In this example `/foo.json` contains `[]`. Start your server and then:
+Create a json file containing an array. In this example `./data/foo.json` contains `[]`. Start your server and then:
 
 ```shell
 $ curl http://localhost:3000/foo.json
